@@ -8,20 +8,20 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var checkCmd = &cobra.Command{
+var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "Displays the list of POSIX commands",
 	Long: `Displays the list of POSIX commands.
 
 list subcommand outputs a list of POSIX commands in a table,
-indicating whether they are built-in or required, optional.`,
+indicating whether they are shell built-in or required, optional.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		os.Exit(list(cmd, args))
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(checkCmd)
+	rootCmd.AddCommand(listCmd)
 }
 
 func list(cmd *cobra.Command, args []string) int {

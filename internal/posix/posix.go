@@ -177,3 +177,8 @@ func Commands() []Command {
 		{Name: "zcat", Desc: "expand and concatenate data", Type: "optional"},
 	}
 }
+
+// IsBuiltInCmds return whether command is shell built-in one or not
+func IsBuiltInCmds(cmd Command) bool {
+	return cmd.Type == "shell built-in"
+}
