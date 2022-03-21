@@ -6,7 +6,7 @@ before:
     - go mod tidy
     - go generate ./...
 builds:
-  - main: ./cmd/posixer
+  - main: .
     ldflags:
       - -s -w
     env:
@@ -35,4 +35,4 @@ builds:
       filters:
         exclude:
           - "^docs:"
-          - "^test:"	
+          - "^test:"
