@@ -18,37 +18,33 @@ $ go install github.com/nao1215/posixer@latest
 ### Checks if the POSIX commands is already installed
 ```
 $ posixer check
-+------------+----------------+----------------+
-|    NAME    |      TYPE      | IN YOUR SYSTEM |
-+------------+----------------+----------------+
-| alias      | shell built-in | installed      |
-| bg         | shell built-in | installed      |
-| cd         | shell built-in | installed      |
++------------+----------------+----------------+---------------------+
+|    NAME    |      TYPE      | IN YOUR SYSTEM |        PATH         |
++------------+----------------+----------------+---------------------+
+| alias      | shell built-in | installed      | /usr/bin/alias      |
+| bg         | shell built-in | installed      | /usr/bin/bg         |
+| cd         | shell built-in | installed      | /usr/bin/cd         |
+| command    | shell built-in | installed      | /usr/bin/command    |
    :
    :
-| wait       | shell built-in | installed      |
-| ar         | required       | installed      |
-| at         | required       | installed      |
-| awk        | required       | installed      |
-| basename   | required       | installed      |
+| wait       | shell built-in | installed      | /usr/bin/wait       |
+| ar         | required       | installed      | /usr/bin/ar         |
    :
    :
-| mesg       | required       | installed      |
-| sact       | optional       | not installed  |
-| sccs       | optional       | not installed  |
-| rmdel      | optional       | not installed  |
+| xargs      | required       | installed      | /usr/bin/xargs      |
    :
    :
-| vi         | optional       | installed      |
-| what       | optional       | not installed  |
-| yacc       | optional       | installed      |
-| zcat       | optional       | installed      |
-+------------+----------------+----------------+
+| val        | optional       | not installed  | -                   |
+| vi         | optional       | installed      | /usr/bin/vi         |
+| what       | optional       | installed      | /usr/bin/what       |
+| yacc       | optional       | installed      | /usr/bin/yacc       |
+| zcat       | optional       | installed      | /usr/bin/zcat       |
++------------+----------------+----------------+---------------------+
 ``` 
 
 ### List up POSIX commands
 ```
-$ ./posixer list
+$ posixer list
 +------------+----------------+---------------------------------------------------------------------------------+
 |    NAME    |      TYPE      |                                   DESCRIPTION                                   |
 +------------+----------------+---------------------------------------------------------------------------------+

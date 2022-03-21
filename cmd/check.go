@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"os"
+	"os/exec"
 
 	"github.com/nao1215/posixer/internal/posix"
 	"github.com/nao1215/posixer/internal/shell"
@@ -23,22 +24,23 @@ func init() {
 }
 
 func check(cmd *cobra.Command, args []string) int {
-	cmds := posix.Commands()
+	commands := posix.Commands()
 	data := [][]string{}
-	for _, c := range cmds {
-		if posix.IsBuiltInCmds(c) {
-			data = append(data, []string{c.Name, c.Type, "installed"})
-		} else {
-			if shell.ExistCmd(c.Name) {
-				data = append(data, []string{c.Name, c.Type, "installed"})
+	for _, c := range commands {
+		path, err := exec.LookPath(c.Name)
+		if err != nil {
+			if posix.IsBuiltInCommands(c) {
+				data = append(data, []string{c.Name, c.Type, "installed", "in " + shell.CurrentShell()})
 			} else {
-				data = append(data, []string{c.Name, c.Type, "not installed"})
+				data = append(data, []string{c.Name, c.Type, "not installed", "-"})
 			}
+		} else {
+			data = append(data, []string{c.Name, c.Type, "installed", path})
 		}
 	}
 
 	table := tablewriter.NewWriter(os.Stdout)
-	table.SetHeader([]string{"Name", "Type", "In your system"})
+	table.SetHeader([]string{"Name", "Type", "In your system", "Path"})
 	table.SetAutoWrapText(false)
 
 	for _, v := range data {

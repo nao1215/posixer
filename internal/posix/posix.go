@@ -178,7 +178,7 @@ func Commands() []Command {
 	}
 }
 
-// IsBuiltInCmds return whether command is shell built-in one or not
-func IsBuiltInCmds(cmd Command) bool {
+// IsBuiltInCommands return whether command is shell built-in one or not
+func IsBuiltInCommands(cmd Command) bool {
 	return cmd.Type == "shell built-in"
 }

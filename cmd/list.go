@@ -26,9 +26,9 @@ func init() {
 
 func list(cmd *cobra.Command, args []string) int {
 
-	cmds := posix.Commands()
+	commands := posix.Commands()
 	data := [][]string{}
-	for _, c := range cmds {
+	for _, c := range commands {
 		data = append(data, []string{c.Name, c.Type, c.Desc})
 	}
 
