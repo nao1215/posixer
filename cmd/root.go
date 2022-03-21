@@ -8,7 +8,8 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use: "posixer",
+	Use:   "posixer",
+	Short: `posixer command provides information about the Posix-Shell`,
 }
 
 func exitError(msg interface{}) {
@@ -16,11 +17,8 @@ func exitError(msg interface{}) {
 	os.Exit(1)
 }
 
+// Execute run posixer command.
 func Execute() {
-	rootCmd.Run = func(cmd *cobra.Command, args []string) {
-		_ = rootCmd.Help()
-	}
-
 	if err := rootCmd.Execute(); err != nil {
 		exitError(err)
 	}
